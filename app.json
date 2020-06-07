@@ -1,0 +1,17 @@
+{
+  "name": "DropacTello",
+  "displayName": "DropacTello",
+  "expo": {
+    "name": "DropacTello",
+    "slug": "DropacTello",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
