@@ -5,11 +5,13 @@
     "ios": "react-native run-ios",
     "web": "expo start --web",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "server": "node backend/index.js"
   },
   "dependencies": {
     "expo": "~37.0.3",
     "expo-updates": "~0.2.0",
+    "lodash": "4.17.15",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
     "react-native": "~0.61.5",
@@ -17,7 +19,9 @@
     "react-native-reanimated": "~1.7.0",
     "react-native-screens": "~2.2.0",
     "react-native-unimodules": "~0.9.0",
-    "react-native-web": "~0.11.7"
+    "react-native-web": "~0.11.7",
+    "socket.io": "2.3.0",
+    "socket.io-client": "2.3.0"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
