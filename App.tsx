@@ -1,20 +1,30 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import * as React from 'react';
+import { Platform, StatusBar, StyleSheet, SafeAreaView } from 'react-native';
+import TestScreen from './screens/Test';
+const Stack = createStackNavigator();
+import colors from './style/colors';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>D R O P A C</Text>
-      <Text>Tello drone controller</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <TestScreen />
+      {/* {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen name="Hello" component={TestScreen} options={{ headerShown: false }} />
+          </Stack.Navigator>
+        </NavigationContainer> */}
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.backgroundDark
   },
 });
