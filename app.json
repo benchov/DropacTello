@@ -5,6 +5,9 @@
     "name": "DropacTello",
     "slug": "DropacTello",
     "version": "1.0.0",
+    "androidNavigationBar": {
+      "visible": "immersive"
+    },
     "platforms": [
       "ios",
       "android",
