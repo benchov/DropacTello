@@ -9,7 +9,7 @@ const port = 8000;
 
 const DRONE_PORT = '8889';
 const STATE_PORT = '8890';
-const HOST = '192.168.0.199';
+const HOST = '192.168.10.1';
 
 
 const stateParser = (msg) => {
