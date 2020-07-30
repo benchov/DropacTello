@@ -15,7 +15,7 @@ const TestScreen = () => {
     const [state, updateState] = React.useState({});
 
     React.useEffect(() => {
-        ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE)
+        // ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE)
     }, [])
 
     React.useEffect(() => {
