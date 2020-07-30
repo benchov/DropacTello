@@ -49,7 +49,11 @@ io.on('connection', socket => {
 
 io.on('connection', socket => {
     socket.on('command', (cmd) => {
-        console.log('cmd ', cmd);
+        // console.log('cmd', cmd)
+        if (cmd === 'command') {
+            drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
+            // drone.send('takeoff', 0, 'takeoff'.length, DRONE_PORT, HOST, handleError);
+        }
         if (cmd === 'takeoff') {
             drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
             drone.send('takeoff', 0, 'takeoff'.length, DRONE_PORT, HOST, handleError);
