@@ -66,6 +66,22 @@ io.on('connection', socket => {
             drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
             drone.send('emergency', 0, 'emergency'.length, DRONE_PORT, HOST, handleError);
         }
+        if (cmd === 'left') {
+            drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
+            drone.send('left 20', 0, 'emergency'.length, DRONE_PORT, HOST, handleError);
+        }
+        if (cmd === 'right') {
+            drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
+            drone.send('right 20', 0, 'emergency'.length, DRONE_PORT, HOST, handleError);
+        }
+        if (cmd === 'back') {
+            drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
+            drone.send('back 20', 0, 'emergency'.length, DRONE_PORT, HOST, handleError);
+        }
+        if (cmd === 'forward') {
+            drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
+            drone.send('forward 20', 0, 'emergency'.length, DRONE_PORT, HOST, handleError);
+        }
     });
 });
 server.listen(port, () => console.log("server running on port:" + port));
