@@ -10,7 +10,7 @@ import io from "socket.io-client";
 
 const TestScreen = () => {
 
-    const [command, setCommand] = React.useState<string>();
+    const [command, setCommand] = React.useState<string>('command');
     const [status, updateStatus] = React.useState<string>('N/A');
     const [state, updateState] = React.useState({});
 
