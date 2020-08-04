@@ -40,7 +40,7 @@ export default ControllButtonGroup
 const styles = StyleSheet.create({
     container: {
         flex: 4,
-        backgroundColor: colors.backgroundLight,
+        backgroundColor: colors.backgroundDark,
         flexDirection: 'row',
         alignItems: 'flex-start',
         justifyContent: 'space-between',

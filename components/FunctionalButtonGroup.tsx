@@ -29,7 +29,7 @@ export default FunctionalButtonGroup
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.backgroundLight,
+        backgroundColor: colors.backgroundDark,
         // opacity: 0.9,
         flexDirection: 'row',
         alignItems: 'center',
