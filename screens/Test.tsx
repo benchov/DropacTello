@@ -15,7 +15,9 @@ const TestScreen = () => {
     const [state, updateState] = React.useState({});
 
     React.useEffect(() => {
-        // ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE)
+        if (Platform.OS !== 'web') {
+            ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE)
+        }
     }, [])
 
     React.useEffect(() => {
