@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Platform } from 'react-native'
 import colors from '../style/colors';
 import { Entypo } from "@expo/vector-icons";
 
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     },
     logo: {
         color: colors.yellowMedium,
-        letterSpacing: 13,
+        letterSpacing: Platform.OS === 'web' ? 5 : 13,
         fontSize: 20,
     },
     logoContainer: {
