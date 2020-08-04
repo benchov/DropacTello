@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, StyleSheet, StatusBar } from 'react-native';
+import { View, StyleSheet, StatusBar, Platform } from 'react-native';
 import FunctionalButtonGroup from '../components/FunctionalButtonGroup';
 import ControllButtonGroup from '../components/ControllButtonGroup';
 import StateDisplay from '../components/StateDisplay';
