@@ -54,6 +54,9 @@ io.on('connection', socket => {
             drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
             // drone.send('takeoff', 0, 'takeoff'.length, DRONE_PORT, HOST, handleError);
         }
+        if (_.startsWith(cmd, 'rc')) {
+            drone.send(cmd, 0, cmd.length, DRONE_PORT, HOST, handleError);
+        }
         if (cmd === 'takeoff') {
             // drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
             drone.send('takeoff', 0, 'takeoff'.length, DRONE_PORT, HOST, handleError);

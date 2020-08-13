@@ -1,35 +1,74 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
-import CommandButton from './IconButton'
-
+import { StyleSheet, View, TouchableWithoutFeedback } from 'react-native'
 import colors from '../style/colors';
 import size from '../style/size';
+import { Entypo } from '@expo/vector-icons';
 
 interface ControllButtonGroupProps {
     onClick: any,
 }
 
 const ControllButtonGroup: React.SFC<ControllButtonGroupProps> = (props) => {
-    const onClickHandler = (value: string) => {
-        props.onClick(value);
-    };
+    const [channellA, setChannelA] = React.useState(0);
+    const [channellB, setChannelB] = React.useState(0);
+    const [channellC, setChannelC] = React.useState(0);
+    const [channellD, setChannelD] = React.useState(0);
+
+    React.useEffect(() => {
+        props.onClick(
+            `rc ${channellA} ${channellB} ${channellC} ${channellD}`
+        );
+    }, [channellD, channellC, channellA, channellB]);
+
     return (
         <View style={styles.container}>
             <View style={styles.mainArrowContainer}>
-                <CommandButton size={size.large} onClick={onClickHandler} color={colors.yellowMedium} commandType="ccw" />
+                <TouchableWithoutFeedback onPressIn={() => setChannelD(-50)} onPressOut={() => setChannelD(0)}>
+                    <View>
+                        <Entypo name={'chevron-thin-left'} size={size.large} color={colors.yellowMedium} />
+                    </View>
+                </TouchableWithoutFeedback>
                 <View style={styles.upDownContainer}>
-                    <CommandButton size={size.large} onClick={onClickHandler} color={colors.yellowMedium} commandType="up" style={{ paddingBottom: 30 }} />
-                    <CommandButton size={size.large} onClick={onClickHandler} color={colors.yellowMedium} commandType="down" style={{ paddingTop: 30 }} />
+                    <TouchableWithoutFeedback onPressIn={() => setChannelC(50)} onPressOut={() => setChannelC(0)}>
+                        <View style={{ paddingBottom: 25 }}>
+                            <Entypo name={'chevron-thin-up'} size={size.large} color={colors.yellowMedium} />
+                        </View>
+                    </TouchableWithoutFeedback>
+                    <TouchableWithoutFeedback onPressIn={() => setChannelC(-50)} onPressOut={() => setChannelC(0)}>
+                        <View style={{ paddingTop: 25 }}>
+                            <Entypo name={'chevron-thin-down'} size={size.large} color={colors.yellowMedium} />
+                        </View>
+                    </TouchableWithoutFeedback>
                 </View>
-                <CommandButton size={size.large} onClick={onClickHandler} color={colors.yellowMedium} commandType="cw" />
+                <TouchableWithoutFeedback onPressIn={() => setChannelD(50)} onPressOut={() => setChannelD(0)}>
+                    <View>
+                        <Entypo name={'chevron-thin-right'} size={size.large} color={colors.yellowMedium} />
+                    </View>
+                </TouchableWithoutFeedback>
             </View>
             <View style={styles.mainArrowContainer}>
-                <CommandButton size={size.large} onClick={onClickHandler} color={colors.yellowMedium} commandType="left" />
+                <TouchableWithoutFeedback onPressIn={() => setChannelA(-50)} onPressOut={() => setChannelA(0)}>
+                    <View>
+                        <Entypo name={'chevron-thin-left'} size={size.large} color={colors.yellowMedium} />
+                    </View>
+                </TouchableWithoutFeedback>
                 <View style={styles.upDownContainer}>
-                    <CommandButton size={size.large} onClick={onClickHandler} color={colors.yellowMedium} commandType="forward" style={{ paddingBottom: 30 }} />
-                    <CommandButton size={size.large} onClick={onClickHandler} color={colors.yellowMedium} commandType="back" style={{ paddingTop: 30 }} />
+                    <TouchableWithoutFeedback onPressIn={() => setChannelB(50)} onPressOut={() => setChannelB(0)}>
+                        <View style={{ paddingBottom: 25 }}>
+                            <Entypo name={'chevron-thin-up'} size={size.large} color={colors.yellowMedium} />
+                        </View>
+                    </TouchableWithoutFeedback>
+                    <TouchableWithoutFeedback onPressIn={() => setChannelB(-50)} onPressOut={() => setChannelB(0)}>
+                        <View style={{ paddingTop: 25 }}>
+                            <Entypo name={'chevron-thin-down'} size={size.large} color={colors.yellowMedium} />
+                        </View>
+                    </TouchableWithoutFeedback>
                 </View>
-                <CommandButton size={size.large} onClick={onClickHandler} color={colors.yellowMedium} commandType="right" />
+                <TouchableWithoutFeedback onPressIn={() => setChannelA(50)} onPressOut={() => setChannelA(0)}>
+                    <View>
+                        <Entypo name={'chevron-thin-right'} size={size.large} color={colors.yellowMedium} />
+                    </View>
+                </TouchableWithoutFeedback>
             </View>
         </View>
     )
@@ -51,7 +90,6 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 60,
     },
     mainArrowContainer: {
-        // backgroundColor: colors.white,
         width: 150,
         flex: 1,
         flexDirection: 'row',
@@ -61,6 +99,6 @@ const styles = StyleSheet.create({
         marginLeft: 90
     },
     upDownContainer: {
-        alignItems: 'flex-start'
+        backgroundColor: colors.backgroundDark,
     }
 })
