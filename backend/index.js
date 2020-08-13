@@ -55,31 +55,32 @@ io.on('connection', socket => {
             // drone.send('takeoff', 0, 'takeoff'.length, DRONE_PORT, HOST, handleError);
         }
         if (cmd === 'takeoff') {
-            drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
+            // drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
             drone.send('takeoff', 0, 'takeoff'.length, DRONE_PORT, HOST, handleError);
         }
         if (cmd === 'land') {
-            drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
+            // drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
             drone.send('land', 0, 'land'.length, DRONE_PORT, HOST, handleError);
         }
         if (cmd === 'emergency') {
-            drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
+            // drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
             drone.send('emergency', 0, 'emergency'.length, DRONE_PORT, HOST, handleError);
         }
+
         if (cmd === 'left') {
-            drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
+            // drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
             drone.send('left 20', 0, 'emergency'.length, DRONE_PORT, HOST, handleError);
         }
         if (cmd === 'right') {
-            drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
+            // drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
             drone.send('right 20', 0, 'emergency'.length, DRONE_PORT, HOST, handleError);
         }
         if (cmd === 'back') {
-            drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
+            // drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
             drone.send('back 20', 0, 'emergency'.length, DRONE_PORT, HOST, handleError);
         }
         if (cmd === 'forward') {
-            drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
+            // drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
             drone.send('forward 20', 0, 'emergency'.length, DRONE_PORT, HOST, handleError);
         }
     });
