@@ -1,8 +1,9 @@
 import React from 'react'
-import { StyleSheet, View, TouchableWithoutFeedback } from 'react-native'
+import { StyleSheet, View, TouchableWithoutFeedback, Text } from 'react-native'
 import colors from '../style/colors';
 import size from '../style/size';
 import { Entypo } from '@expo/vector-icons';
+import MissionButtonGroup from './MissionButtonGroup';
 
 interface ControllButtonGroupProps {
     onClick: any,
@@ -45,6 +46,9 @@ const ControllButtonGroup: React.SFC<ControllButtonGroupProps> = (props) => {
                         <Entypo name={'chevron-thin-right'} size={size.large} color={colors.yellowMedium} />
                     </View>
                 </TouchableWithoutFeedback>
+            </View>
+            <View>
+                <MissionButtonGroup />
             </View>
             <View style={styles.mainArrowContainer}>
                 <TouchableWithoutFeedback onPressIn={() => setChannelA(-50)} onPressOut={() => setChannelA(0)}>
@@ -90,7 +94,7 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 60,
     },
     mainArrowContainer: {
-        width: 150,
+        width: 50,
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
