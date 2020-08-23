@@ -25,24 +25,24 @@ const ControllButtonGroup: React.SFC<ControllButtonGroupProps> = (props) => {
         <View style={styles.container}>
             <View style={styles.mainArrowContainer}>
                 <TouchableWithoutFeedback onPressIn={() => setChannelD(-50)} onPressOut={() => setChannelD(0)}>
-                    <View>
+                    <View style={channellD === -50 ? styles.pressFeedback : null}>
                         <Entypo name={'chevron-thin-left'} size={size.large} color={colors.yellowMedium} />
                     </View>
                 </TouchableWithoutFeedback>
                 <View style={styles.upDownContainer}>
                     <TouchableWithoutFeedback onPressIn={() => setChannelC(50)} onPressOut={() => setChannelC(0)}>
-                        <View style={{ paddingBottom: 25 }}>
+                        <View style={[{ paddingBottom: 25 }, channellC === 50 ? styles.pressFeedback : null]}>
                             <Entypo name={'chevron-thin-up'} size={size.large} color={colors.yellowMedium} />
                         </View>
                     </TouchableWithoutFeedback>
                     <TouchableWithoutFeedback onPressIn={() => setChannelC(-50)} onPressOut={() => setChannelC(0)}>
-                        <View style={{ paddingTop: 25 }}>
+                        <View style={[{ paddingTop: 25 }, channellC === -50 ? styles.pressFeedback : null]}>
                             <Entypo name={'chevron-thin-down'} size={size.large} color={colors.yellowMedium} />
                         </View>
                     </TouchableWithoutFeedback>
                 </View>
                 <TouchableWithoutFeedback onPressIn={() => setChannelD(50)} onPressOut={() => setChannelD(0)}>
-                    <View>
+                    <View style={channellD === 50 ? styles.pressFeedback : null}>
                         <Entypo name={'chevron-thin-right'} size={size.large} color={colors.yellowMedium} />
                     </View>
                 </TouchableWithoutFeedback>
@@ -52,24 +52,24 @@ const ControllButtonGroup: React.SFC<ControllButtonGroupProps> = (props) => {
             </View>
             <View style={styles.mainArrowContainer}>
                 <TouchableWithoutFeedback onPressIn={() => setChannelA(-50)} onPressOut={() => setChannelA(0)}>
-                    <View>
+                    <View style={channellA === -50 ? styles.pressFeedback : null}>
                         <Entypo name={'chevron-thin-left'} size={size.large} color={colors.yellowMedium} />
                     </View>
                 </TouchableWithoutFeedback>
                 <View style={styles.upDownContainer}>
                     <TouchableWithoutFeedback onPressIn={() => setChannelB(50)} onPressOut={() => setChannelB(0)}>
-                        <View style={{ paddingBottom: 25 }}>
+                        <View style={[{ paddingBottom: 25 }, channellB === 50 ? styles.pressFeedback : null]}>
                             <Entypo name={'chevron-thin-up'} size={size.large} color={colors.yellowMedium} />
                         </View>
                     </TouchableWithoutFeedback>
                     <TouchableWithoutFeedback onPressIn={() => setChannelB(-50)} onPressOut={() => setChannelB(0)}>
-                        <View style={{ paddingTop: 25 }}>
+                        <View style={[{ paddingTop: 25 }, channellB === -50 ? styles.pressFeedback : null]}>
                             <Entypo name={'chevron-thin-down'} size={size.large} color={colors.yellowMedium} />
                         </View>
                     </TouchableWithoutFeedback>
                 </View>
                 <TouchableWithoutFeedback onPressIn={() => setChannelA(50)} onPressOut={() => setChannelA(0)}>
-                    <View>
+                    <View style={channellA === 50 ? styles.pressFeedback : null}>
                         <Entypo name={'chevron-thin-right'} size={size.large} color={colors.yellowMedium} />
                     </View>
                 </TouchableWithoutFeedback>
@@ -104,5 +104,11 @@ const styles = StyleSheet.create({
     },
     upDownContainer: {
         backgroundColor: colors.backgroundDark,
+    },
+    pressFeedback: {
+        backgroundColor: colors.backgroundLight,
+        borderColor: colors.backgroundLight,
+        borderWidth: 1,
+        borderRadius: 50
     }
 })
