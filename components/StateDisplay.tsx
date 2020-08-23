@@ -5,6 +5,9 @@ import { Entypo } from "@expo/vector-icons";
 
 interface Props {
     battery: number | null,
+    height?: number | null,
+    verticalSpeed?: number | null,
+    distance?: number | null,
     connection: string
 }
 const StateDisplay: React.FC<Props> = (props) => {
@@ -14,8 +17,17 @@ const StateDisplay: React.FC<Props> = (props) => {
                 <Entypo name="battery" size={24} color={colors.yellowMedium} />
                 <Text style={styles.textStyle}>{props.battery || 'N/A'}</Text>
             </View>
-            <View style={styles.logoContainer}>
-                <Text style={styles.logo}>DROPAC</Text>
+            <View style={styles.container}>
+                <Text style={[styles.textStyle, { color: colors.yellowMedium }]}>VS</Text>
+                <Text style={styles.textStyle}>{props.verticalSpeed ? `${props.verticalSpeed} m/s` : 'N/A'}</Text>
+            </View>
+            <View style={styles.container}>
+                <Text style={[styles.textStyle, { color: colors.yellowMedium }]}>H</Text>
+                <Text style={styles.textStyle}>{props.height ? `${props.height} m` : "N/A"}</Text>
+            </View>
+            <View style={styles.container}>
+                <Text style={[styles.textStyle, { color: colors.yellowMedium }]}>D</Text>
+                <Text style={styles.textStyle}>{props.distance ? `${props.distance} m` : "N/A"}</Text>
             </View>
             <View style={styles.container}>
                 <Entypo name="rss" size={24} color={colors.yellowMedium} />

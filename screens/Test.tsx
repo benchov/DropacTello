@@ -7,12 +7,11 @@ import * as ScreenOrientation from 'expo-screen-orientation';
 import env from '../urlConfig';
 import io from "socket.io-client";
 
-
 const TestScreen = () => {
 
     const [command, setCommand] = React.useState<string>('command');
     const [status, updateStatus] = React.useState<string>('N/A');
-    const [state, updateState] = React.useState({});
+    const [droneState, updateState] = React.useState<object>();
 
     React.useEffect(() => {
         if (Platform.OS !== 'web') {
@@ -24,23 +23,23 @@ const TestScreen = () => {
         const socket = io(env.serverUrl);
         socket.on('disconnect', () => {
             if (socket.disconnected) {
-                updateStatus('Disconected')
+                updateStatus('Fail')
             }
         });
 
         socket.on('connect', () => {
             if (socket.connected) {
-                updateStatus('Conected')
+                updateStatus('Ok')
             }
         });
     }, [status]);
 
     React.useEffect(() => {
         const socket = io(env.serverUrl);
-        socket.on('tellostate', (msg: string) => {
-            updateState(msg)
+        socket.on('tellostate', (msg: any) => {
+            updateState(msg);
         });
-    }, []);
+    }, [droneState]);
 
     React.useEffect(() => {
         const socket = io(env.serverUrl);
@@ -55,7 +54,7 @@ const TestScreen = () => {
         <View style={styles.container}>
             <View>
                 <StatusBar hidden={true} />
-                <StateDisplay battery={null} connection={status} />
+                <StateDisplay verticalSpeed={droneState ? droneState.vgx : null} battery={droneState ? droneState.bat : null} height={droneState ? droneState.h : null} connection={status} />
                 <View style={styles.buttonContainer}>
                     <FunctionalButtonGroup onClick={onClickHandler} />
                     <ControllButtonGroup onClick={onClickHandler} />
