@@ -4,6 +4,7 @@ import colors from '../style/colors';
 import size from '../style/size';
 import { Entypo } from '@expo/vector-icons';
 import MissionButtonGroup from './MissionButtonGroup';
+import ControlButton from './ControlButton';
 
 interface ControllButtonGroupProps {
     onClick: any,
@@ -24,55 +25,67 @@ const ControllButtonGroup: React.SFC<ControllButtonGroupProps> = (props) => {
     return (
         <View style={styles.container}>
             <View style={styles.mainArrowContainer}>
-                <TouchableWithoutFeedback onPressIn={() => setChannelD(-50)} onPressOut={() => setChannelD(0)}>
-                    <View style={channellD === -50 ? styles.pressFeedback : null}>
-                        <Entypo name={'chevron-thin-left'} size={size.large} color={colors.yellowMedium} />
-                    </View>
-                </TouchableWithoutFeedback>
+                <ControlButton
+                    handlePressIn={() => setChannelD(-50)}
+                    handlePressOut={() => setChannelD(0)}
+                    pressed={channellD === -50}
+                    iconDirection={"left"}
+                />
                 <View style={styles.upDownContainer}>
-                    <TouchableWithoutFeedback onPressIn={() => setChannelC(50)} onPressOut={() => setChannelC(0)}>
-                        <View style={[{ paddingBottom: 25 }, channellC === 50 ? styles.pressFeedback : null]}>
-                            <Entypo name={'chevron-thin-up'} size={size.large} color={colors.yellowMedium} />
-                        </View>
-                    </TouchableWithoutFeedback>
-                    <TouchableWithoutFeedback onPressIn={() => setChannelC(-50)} onPressOut={() => setChannelC(0)}>
-                        <View style={[{ paddingTop: 25 }, channellC === -50 ? styles.pressFeedback : null]}>
-                            <Entypo name={'chevron-thin-down'} size={size.large} color={colors.yellowMedium} />
-                        </View>
-                    </TouchableWithoutFeedback>
+                    <ControlButton
+                        handlePressIn={() => setChannelC(50)}
+                        handlePressOut={() => setChannelC(0)}
+                        pressed={channellC === 50}
+                        iconDirection={"up"}
+                        style={{ paddingBottom: 25 }}
+                    />
+                    <ControlButton
+                        handlePressIn={() => setChannelC(-50)}
+                        handlePressOut={() => setChannelC(0)}
+                        pressed={channellC === -50}
+                        iconDirection={"down"}
+                        style={{ paddingTop: 25 }}
+                    />
                 </View>
-                <TouchableWithoutFeedback onPressIn={() => setChannelD(50)} onPressOut={() => setChannelD(0)}>
-                    <View style={channellD === 50 ? styles.pressFeedback : null}>
-                        <Entypo name={'chevron-thin-right'} size={size.large} color={colors.yellowMedium} />
-                    </View>
-                </TouchableWithoutFeedback>
+                <ControlButton
+                    handlePressIn={() => setChannelD(50)}
+                    handlePressOut={() => setChannelD(0)}
+                    pressed={channellD === 50}
+                    iconDirection={"right"}
+                />
             </View>
             <View>
                 <MissionButtonGroup />
             </View>
             <View style={styles.mainArrowContainer}>
-                <TouchableWithoutFeedback onPressIn={() => setChannelA(-50)} onPressOut={() => setChannelA(0)}>
-                    <View style={channellA === -50 ? styles.pressFeedback : null}>
-                        <Entypo name={'chevron-thin-left'} size={size.large} color={colors.yellowMedium} />
-                    </View>
-                </TouchableWithoutFeedback>
+                <ControlButton
+                    handlePressIn={() => setChannelA(-50)}
+                    handlePressOut={() => setChannelA(0)}
+                    pressed={channellA === -50}
+                    iconDirection={"left"}
+                />
                 <View style={styles.upDownContainer}>
-                    <TouchableWithoutFeedback onPressIn={() => setChannelB(50)} onPressOut={() => setChannelB(0)}>
-                        <View style={[{ paddingBottom: 25 }, channellB === 50 ? styles.pressFeedback : null]}>
-                            <Entypo name={'chevron-thin-up'} size={size.large} color={colors.yellowMedium} />
-                        </View>
-                    </TouchableWithoutFeedback>
-                    <TouchableWithoutFeedback onPressIn={() => setChannelB(-50)} onPressOut={() => setChannelB(0)}>
-                        <View style={[{ paddingTop: 25 }, channellB === -50 ? styles.pressFeedback : null]}>
-                            <Entypo name={'chevron-thin-down'} size={size.large} color={colors.yellowMedium} />
-                        </View>
-                    </TouchableWithoutFeedback>
+                    <ControlButton
+                        handlePressIn={() => setChannelB(50)}
+                        handlePressOut={() => setChannelB(0)}
+                        pressed={channellB === 50}
+                        iconDirection={"up"}
+                        style={{ paddingBottom: 25 }}
+                    />
+                    <ControlButton
+                        handlePressIn={() => setChannelB(-50)}
+                        handlePressOut={() => setChannelB(0)}
+                        pressed={channellB === -50}
+                        iconDirection={"down"}
+                        style={{ paddingTop: 25 }}
+                    />
                 </View>
-                <TouchableWithoutFeedback onPressIn={() => setChannelA(50)} onPressOut={() => setChannelA(0)}>
-                    <View style={channellA === 50 ? styles.pressFeedback : null}>
-                        <Entypo name={'chevron-thin-right'} size={size.large} color={colors.yellowMedium} />
-                    </View>
-                </TouchableWithoutFeedback>
+                <ControlButton
+                    handlePressIn={() => setChannelA(50)}
+                    handlePressOut={() => setChannelA(0)}
+                    pressed={channellA === 50}
+                    iconDirection={"right"}
+                />
             </View>
         </View>
     )
