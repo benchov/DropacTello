@@ -52,21 +52,17 @@ io.on('connection', socket => {
         // console.log('cmd', cmd)
         if (cmd === 'command') {
             drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
-            // drone.send('takeoff', 0, 'takeoff'.length, DRONE_PORT, HOST, handleError);
         }
         if (_.startsWith(cmd, 'rc')) {
             drone.send(cmd, 0, cmd.length, DRONE_PORT, HOST, handleError);
         }
         if (cmd === 'takeoff') {
-            // drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
             drone.send('takeoff', 0, 'takeoff'.length, DRONE_PORT, HOST, handleError);
         }
         if (cmd === 'land') {
-            // drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
             drone.send('land', 0, 'land'.length, DRONE_PORT, HOST, handleError);
         }
         if (cmd === 'emergency') {
-            // drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
             drone.send('emergency', 0, 'emergency'.length, DRONE_PORT, HOST, handleError);
         }
 
