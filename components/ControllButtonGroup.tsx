@@ -55,7 +55,7 @@ const ControllButtonGroup: React.SFC<ControllButtonGroupProps> = (props) => {
                 />
             </View>
             <View>
-                <MissionButtonGroup />
+                <MissionButtonGroup onClick={(v: string) => props.onClick(v)} />
             </View>
             <View style={styles.mainArrowContainer}>
                 <ControlButton

@@ -3,18 +3,21 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import colors from '../style/colors';
 
 interface Props {
-    height?: number | null,
-    verticalSpeed?: number | null,
-    distance?: number | null,
-}
+    onClick: any
+};
+
 const MissionButtonGroup: React.FC<Props> = (props) => {
+    const onClickHandler = (value: string) => {
+        props.onClick(value);
+    }
+
     return (
         <View style={styles.mainContainer}>
-            <TouchableOpacity style={styles.container}>
+            <TouchableOpacity style={styles.container} onPress={onClickHandler('fnctest')}>
                 <Text style={styles.textStyle}>FNC TEST</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.container}>
-                <Text style={styles.textStyle}>TRICK</Text>
+            <TouchableOpacity style={styles.container} onPress={onClickHandler('stop')}>
+                <Text style={styles.textStyle}>STOP</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.container}>
                 <Text style={styles.textStyle}>RANDOM</Text>
