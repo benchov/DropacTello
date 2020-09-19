@@ -43,6 +43,7 @@ const TestScreen = () => {
 
     React.useEffect(() => {
         const socket = io(env.serverUrl);
+        console.log('command', command);
         socket.emit('command', command);
     }, [command]);
 
