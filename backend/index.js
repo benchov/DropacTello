@@ -75,23 +75,22 @@ io.on('connection', socket => {
         if (cmd === 'emergency') {
             drone.send('emergency', 0, 'emergency'.length, DRONE_PORT, HOST, handleError);
         }
-
-        if (cmd === 'left') {
-            // drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
-            drone.send('left 20', 0, 'emergency'.length, DRONE_PORT, HOST, handleError);
+        if (cmd === 'stop') {
+            drone.send('stop', 0, 'emergency'.length, DRONE_PORT, HOST, handleError);
         }
-        if (cmd === 'right') {
-            // drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
-            drone.send('right 20', 0, 'emergency'.length, DRONE_PORT, HOST, handleError);
-        }
-        if (cmd === 'back') {
-            // drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
-            drone.send('back 20', 0, 'emergency'.length, DRONE_PORT, HOST, handleError);
-        }
-        if (cmd === 'forward') {
-            // drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
-            drone.send('forward 20', 0, 'emergency'.length, DRONE_PORT, HOST, handleError);
+        if (cmd === 'fnctest') {
+            commandHandler(commandList.fnctestChannel)
         }
     });
 });
+
+const commandList = {
+    fnctestChannel: [
+        { command: 'rc 0 10 0 0', delay: 1500 },
+        { command: 'rc 0 0 0 0', delay: 0 },
+        { command: 'rc 0 -10 0 0', delay: 1500 },
+        { command: 'rc 50 0 0 0', delay: 0 },
+    ]
+};
+
 server.listen(port, () => console.log("server running on port:" + port));
