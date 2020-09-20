@@ -43,7 +43,7 @@ state.bind(STATE_PORT);
 state.on('message', _.throttle(message => {
     console.log(`🚁  ${message}`);
     io.emit('tellostate', stateParser(message));
-}, 2000));
+}, 15000));
 
 function handleError(err) {
     if (err) {
