@@ -7,16 +7,12 @@ interface Props {
 };
 
 const MissionButtonGroup: React.FC<Props> = (props) => {
-    const onClickHandler = (value: string) => {
-        props.onClick(value);
-    }
-
     return (
         <View style={styles.mainContainer}>
-            <TouchableOpacity style={styles.container} onPress={onClickHandler('fnctest')}>
+            <TouchableOpacity style={styles.container} onPress={props.onClick('fnctest')}>
                 <Text style={styles.textStyle}>FNC TEST</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.container} onPress={onClickHandler('stop')}>
+            <TouchableOpacity style={styles.container} onPress={props.onClick('stop')}>
                 <Text style={styles.textStyle}>STOP</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.container}>
