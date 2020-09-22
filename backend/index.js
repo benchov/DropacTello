@@ -1,5 +1,6 @@
 const dgram = require('dgram');
 const _ = require('lodash');
+const commandList = require('./commandList');
 
 const express = require("express");
 const app = express();
@@ -83,14 +84,5 @@ io.on('connection', socket => {
         }
     });
 });
-
-const commandList = {
-    fnctestChannel: [
-        { command: 'rc 0 10 0 0', delay: 1500 },
-        { command: 'rc 0 0 0 0', delay: 0 },
-        { command: 'rc 0 -10 0 0', delay: 1500 },
-        { command: 'rc 50 0 0 0', delay: 0 },
-    ]
-};
 
 server.listen(port, () => console.log("server running on port:" + port));
