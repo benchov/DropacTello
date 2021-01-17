@@ -62,3 +62,4 @@ buck-out/
 .expo/*
 web-build/
 urlConfig.ts
+yarn.lock
