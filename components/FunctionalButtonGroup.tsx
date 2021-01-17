@@ -9,7 +9,7 @@ interface FunctionalButtonGroupProps {
     onClick: any,
 }
 
-const FunctionalButtonGroup: React.SFC<FunctionalButtonGroupProps> = (props) => {
+const FunctionalButtonGroup: React.FC<FunctionalButtonGroupProps> = (props) => {
     const onClickHandler = (value: string) => {
         props.onClick(value);
     };
