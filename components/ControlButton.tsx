@@ -12,7 +12,7 @@ interface Props {
     style?: object
 }
 const ControlButton: React.FC<Props> = (props) => {
-    const handlePress = (status: string) => {
+    const handlePress = (status: string): void => {
         if (status === 'in') {
             props.handlePressIn()
         }
