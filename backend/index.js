@@ -79,9 +79,9 @@ io.on('connection', socket => {
         if (cmd === 'stop') {
             drone.send('stop', 0, 'emergency'.length, DRONE_PORT, HOST, handleError);
         }
-        if (cmd === 'fnctest') {
-            commandHandler(commandList.fnctestChannel)
-        }
+        // if (cmd === 'fnctest') {
+        //     commandHandler(commandList.fnctestChannel)
+        // }
     });
 });
 
