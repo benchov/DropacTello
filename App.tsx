@@ -3,13 +3,14 @@ import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import { Platform, StatusBar, StyleSheet, SafeAreaView } from 'react-native';
 import TestScreen from './screens/Test';
+import GyroNavigation from './screens/GyroNavigation';
 const Stack = createStackNavigator();
 import colors from './style/colors';
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <TestScreen />
+      <GyroNavigation />
       {/* {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
         <NavigationContainer>
           <Stack.Navigator>
