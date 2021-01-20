@@ -55,7 +55,11 @@ const TestScreen = () => {
         <View style={styles.container}>
             <View>
                 <StatusBar hidden={true} />
-                <StateDisplay verticalSpeed={droneState ? droneState.vgx : null} battery={droneState ? droneState.bat : null} height={droneState ? droneState.h : null} connection={status} />
+                <StateDisplay verticalSpeed={droneState ? droneState.vgx : null}
+                    battery={droneState ? droneState.bat : null}
+                    height={droneState ? droneState.h : null}
+                    connection={status}
+                />
                 <View style={styles.buttonContainer}>
                     <FunctionalButtonGroup onClick={onClickHandler} />
                     <ControllButtonGroup onClick={onClickHandler} />
