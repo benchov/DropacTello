@@ -4,9 +4,18 @@ import { DeviceMotion } from 'expo-sensors';
 import * as ScreenOrientation from 'expo-screen-orientation';
 import colors from '../style/colors';
 import ControlButton from '../components/ControlButton';
+<<<<<<< HEAD
 import env from '../urlConfig';
 import io from "socket.io-client";
 
+=======
+interface Coordinates {
+    x: number,
+    y: number,
+    z: number
+import env from '../urlConfig';
+import io from "socket.io-client";
+>>>>>>> 4a82217... feat(GyroNavigation.tsx): Wire server to component
 interface Rotation {
     alpha: number,
     beta: number,
@@ -15,6 +24,9 @@ interface Rotation {
 
 const GyroNavigation = () => {
     const [data, setData] = useState<Rotation>({ alpha: 0, beta: 0, gamma: 0 });
+    const [command, setCommand] = React.useState<string>('command');
+    const [status, updateStatus] = React.useState<string>('N/A');
+    const [droneState, updateState] = React.useState<object>();
 
     DeviceMotion.setUpdateInterval(50);
 
@@ -31,6 +43,10 @@ const GyroNavigation = () => {
         }
     }, [])
 
+<<<<<<< HEAD
+=======
+    let { x, y, z } = data;
+>>>>>>> 4a82217... feat(GyroNavigation.tsx): Wire server to component
     useEffect(() => {
         const socket = io(env.serverUrl);
         socket.on('disconnect', () => {
