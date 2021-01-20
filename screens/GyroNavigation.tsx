@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Platform } from 'react-native';
-import { Gyroscope } from 'expo-sensors';
+import { DeviceMotion } from 'expo-sensors';
 import * as ScreenOrientation from 'expo-screen-orientation';
 import colors from '../style/colors';
 import ControlButton from '../components/ControlButton';
-interface Coordinates {
-    x: number,
-    y: number,
-    z: number
+import env from '../urlConfig';
+import io from "socket.io-client";
+
+interface Rotation {
+    alpha: number,
+    beta: number,
+    gamma: number
 }
 
 const GyroNavigation = () => {
-    const [data, setData] = useState<Coordinates>({ x: 0, y: 0, z: 0 });
-    Gyroscope.setUpdateInterval(50);
+    const [data, setData] = useState<Rotation>({ alpha: 0, beta: 0, gamma: 0 });
+
+    DeviceMotion.setUpdateInterval(50);
 
 
     useEffect(() => {
-        Gyroscope.addListener(gyroscopeData => {
-            setData(gyroscopeData);
+        DeviceMotion.addListener(deviceMotionData => {
+            setData(deviceMotionData.rotation)
         });
     }, []);
 
@@ -27,35 +31,65 @@ const GyroNavigation = () => {
         }
     }, [])
 
-    let { x, y, z } = data;
+    useEffect(() => {
+        const socket = io(env.serverUrl);
+        socket.on('disconnect', () => {
+            if (socket.disconnected) {
+                updateStatus('Fail')
+            }
+        });
+
+        socket.on('connect', () => {
+            if (socket.connected) {
+                updateStatus('Ok')
+            }
+        });
+    }, [status]);
+
+    useEffect(() => {
+        const socket = io(env.serverUrl);
+        socket.on('tellostate', (msg: any) => {
+            updateState(msg);
+        });
+    }, [droneState]);
+
+    useEffect(() => {
+        const socket = io(env.serverUrl);
+        console.log('command', command);
+        socket.emit('command', command);
+    }, [command]);
+
     return (
         <View style={styles.mainContainer}>
-            <View style={styles.sensor}>
-                <Text style={styles.text}>Gyroscope:</Text>
-                <Text style={styles.text}>
-                    x: {round(x)} y: {round(y)} z: {round(z)}
-                </Text>
+            <View style={styles.rotationContainer}>
+                <Text style={[styles.text, {
+                    marginRight: 50, fontSize: (data.alpha > 0.5) ? 30 : 15
+                }]}>Rotate L</Text>
+                <Text style={[styles.text, {
+                    marginLeft: 50, fontSize: (data.alpha < -0.5) ? 30 : 15
+                }]}>Rotate R</Text>
             </View>
             <View style={styles.container}>
+
                 <View style={styles.mainArrowContainer}>
                     <ControlButton
                         handlePressIn={() => console.log('object')}
                         handlePressOut={() => console.log('object')}
-                        pressed={data.y < -2}
+                        pressed={round(data.gamma) < -2}
                         iconDirection={"left"}
                     />
                     <View style={styles.upDownContainer}>
                         <ControlButton
                             handlePressIn={() => console.log('object')}
                             handlePressOut={() => console.log('object')}
-                            pressed={data.x < -2}
+                            pressed={round(data.beta) < -3}
                             iconDirection={"up"}
                             style={{ paddingBottom: 25 }}
                         />
                         <ControlButton
                             handlePressIn={() => console.log('object')}
                             handlePressOut={() => console.log('object')}
-                            pressed={data.x > 2}
+                            pressed={round(data.beta) > 3}
                             iconDirection={"down"}
                             style={{ paddingTop: 25 }}
                         />
@@ -63,7 +97,7 @@ const GyroNavigation = () => {
                     <ControlButton
                         handlePressIn={() => console.log('object')}
                         handlePressOut={() => console.log('object')}
-                        pressed={data.y > 2}
+                        pressed={round(data.gamma) > 2}
                         iconDirection={"right"}
                     />
                 </View>
@@ -82,11 +116,6 @@ function round(n: number): number {
 
 
 const styles = StyleSheet.create({
-    sensor: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
     text: {
         color: colors.yellowMedium
     },
@@ -116,6 +145,13 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'space-around',
+    },
+    rotationContainer: {
+        flex: 1,
+        marginTop: 150,
+        justifyContent: 'space-between',
+        alignItems: 'baseline',
+        flexDirection: 'row',
     }
 })
 export default GyroNavigation;
