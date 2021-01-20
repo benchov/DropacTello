@@ -10,7 +10,7 @@ interface ControllButtonGroupProps {
     onClick: any,
 }
 
-const ControllButtonGroup: React.SFC<ControllButtonGroupProps> = (props) => {
+const ControllButtonGroup: React.FC<ControllButtonGroupProps> = (props) => {
     const [channellA, setChannelA] = React.useState(0);
     const [channellB, setChannelB] = React.useState(0);
     const [channellC, setChannelC] = React.useState(0);
