@@ -23,15 +23,15 @@ const stateParser = (msg) => {
     return _.fromPairs(buf2, 'agx')
 }
 
-const commandHandler = (commandArray) => {
-    commandArray.forEach((command, i) => {
+// const commandHandler = (commandArray) => {
+//     commandArray.forEach((command, i) => {
 
-        setTimeout(() => {
-            console.log('command.command', command.command);
-            drone.send(command.command, 0, 'emergency'.length, DRONE_PORT, HOST, handleError);
-        }, i * command.delay);
-    });
-}
+//         setTimeout(() => {
+//             console.log('command.command', command.command);
+//             drone.send(command.command, 0, 'emergency'.length, DRONE_PORT, HOST, handleError);
+//         }, i * command.delay);
+//     });
+// }
 
 const drone = dgram.createSocket('udp4');
 drone.bind(DRONE_PORT);
@@ -60,7 +60,7 @@ io.on('connection', socket => {
 
 io.on('connection', socket => {
     socket.on('command', (cmd) => {
-        // console.log('cmd', cmd)
+        console.log('cmd', cmd)
         if (cmd === 'command') {
             drone.send('command', 0, 'command'.length, DRONE_PORT, HOST, handleError);
         }
