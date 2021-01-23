@@ -126,6 +126,14 @@ const GyroNavigation = () => {
         setGyroAllowed(!gyroAllowed);
     }
 
+    const round = (n: number): number => {
+        if (!n) {
+            return 0;
+        }
+
+        return Math.floor(n * 1000) / 100;
+    }
+
     return (
         <View style={styles.mainContainer}>
             <StatusBar hidden={true} />
@@ -136,7 +144,11 @@ const GyroNavigation = () => {
             />
             <FunctionalButtonGroup onClick={onClickHandler} />
             <View style={{ marginTop: 50 }}>
-                <Button onPress={onGyroAllowHandler} color={gyroAllowed ? colors.yellowDark : colors.backgroundLight} title={gyroAllowed ? "Diable Gyro Navigation" : "Set Gyro Navigation"} />
+                <Button
+                    onPress={onGyroAllowHandler}
+                    color={gyroAllowed ? colors.yellowDark : colors.backgroundLight}
+                    title={gyroAllowed ? "Diable Gyro Navigation" : "Set Gyro Navigation"}
+                />
             </View>
             <View style={styles.rotationContainer}>
                 <Text style={[styles.text, {
@@ -182,15 +194,6 @@ const GyroNavigation = () => {
         </View >
     );
 }
-
-function round(n: number): number {
-    if (!n) {
-        return 0;
-    }
-
-    return Math.floor(n * 1000) / 100;
-}
-
 
 const styles = StyleSheet.create({
     text: {
