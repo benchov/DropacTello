@@ -117,7 +117,7 @@ const GyroNavigation = () => {
     }
 
     const onClickHandler = (value: string): void => {
-        console.log(value);
+        setGyroAllowed(false)
         setCommand(value);
     }
 
