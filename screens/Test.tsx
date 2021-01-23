@@ -47,7 +47,7 @@ const TestScreen = () => {
         socket.emit('command', command);
     }, [command]);
 
-    const onClickHandler = (value: string) => {
+    const onClickHandler = (value: string): void => {
         setCommand(value);
     };
 
