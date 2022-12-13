@@ -19,7 +19,7 @@
     "expo-screen-orientation": "^1.1.1",
     "expo-sensors": "~8.1.0",
     "expo-updates": "~0.2.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "lodash": "4.17.15",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
